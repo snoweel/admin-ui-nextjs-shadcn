@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 
 import { Button } from "@/components/ui/button";
+import { toast, useToast } from "@/components/ui/use-toast";
 
 import {
   Form,
@@ -46,6 +47,7 @@ interface PostEditpageProps {
 const PostEditpage = ({ params }: PostEditpageProps) => {
   const post = posts.find((post) => post.id === params.id);
   console.log(post);
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,6 +65,10 @@ const PostEditpage = ({ params }: PostEditpageProps) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    toast({
+      title: "Post has been updated",
+      description: `updated by ${post?.author} on ${post?.date}`,
+    });
   }
 
   return (

@@ -1,7 +1,6 @@
-// import Image from "next/image";
 import DashboardCard from "@/components/dashboard/DashboardCard";
-import { Button } from "@/components/ui/button";
 import { Folder, MessageCircle, Newspaper, User } from "lucide-react";
+
 export default function Home() {
   return (
     <>
@@ -13,18 +12,18 @@ export default function Home() {
         />
         <DashboardCard
           title="Categories"
-          count={100}
-          icon={<Folder className="text-slate-500" size={12} />}
+          count={12}
+          icon={<Folder className="text-slate-500" size={72} />}
         />
         <DashboardCard
           title="Users"
-          count={100}
-          icon={<User className="text-slate-500" size={758} />}
+          count={750}
+          icon={<User className="text-slate-500" size={72} />}
         />
         <DashboardCard
           title="Comments"
-          count={100}
-          icon={<MessageCircle className="text-slate-500" size={1200} />}
+          count={1200}
+          icon={<MessageCircle className="text-slate-500" size={72} />}
         />
       </div>
     </>

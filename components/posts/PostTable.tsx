@@ -8,7 +8,6 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 import Link from "next/link";
-
 import posts from "@/data/posts";
 import { Post } from "@/types/posts";
 
@@ -16,28 +15,39 @@ interface PostsTableProps {
   limit?: number;
   title?: string;
 }
-const PostTable = ({ title, limit }: PostsTableProps) => {
+
+const PostsTable = ({ limit, title }: PostsTableProps) => {
+  // Sort posts in dec order based on date
+  const sortedPosts: Post[] = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  // Filter posts to limit
+  const filteredPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts;
+
   return (
     <div className="mt-10">
       <h3 className="text-2xl mb-4 font-semibold">{title ? title : "Posts"}</h3>
       <Table>
-        <TableCaption>List of Recent Posts</TableCaption>
+        <TableCaption>A list of recent posts</TableCaption>
         <TableHeader>
-          <TableHead> Title</TableHead>
-          <TableHead className="hidden md:table-cell"> Author</TableHead>
-          <TableHead className="hidden md:table-cell text-right">
-            Date
-          </TableHead>
-          <TableHead> View</TableHead>
+          <TableRow>
+            <TableHead>Title</TableHead>
+            <TableHead className="hidden md:table-cell">Author</TableHead>
+            <TableHead className="hidden md:table-cell text-right">
+              Date
+            </TableHead>
+            <TableHead>View</TableHead>
+          </TableRow>
         </TableHeader>
         <TableBody>
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <TableRow key={post.id}>
               <TableCell>{post.title}</TableCell>
               <TableCell className="hidden md:table-cell">
                 {post.author}
               </TableCell>
-              <TableCell className="hidden md:table-cell text-right">
+              <TableCell className="text-right hidden md:table-cell">
                 {post.date}
               </TableCell>
               <TableCell>
@@ -55,4 +65,4 @@ const PostTable = ({ title, limit }: PostsTableProps) => {
   );
 };
 
-export default PostTable;
+export default PostsTable;

@@ -1,5 +1,11 @@
+import AuthTabs from "@/components/auth/Authtabs";
+
 const AuthPage = () => {
-  return <div>Auth</div>;
+  return (
+    <>
+      <AuthTabs />
+    </>
+  );
 };
 
 export default AuthPage;

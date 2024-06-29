@@ -157,7 +157,9 @@ const PostEditpage = ({ params }: PostEditpageProps) => {
               </FormItem>
             )}
           />
-          <Button className="w-full dark:bg-slate-800">Update Post</Button>
+          <Button className="w-full dark:bg-slate-800 dark:text-cyan-50">
+            Update Post
+          </Button>
         </form>
       </Form>
     </>

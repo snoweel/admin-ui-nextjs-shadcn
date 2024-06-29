@@ -59,55 +59,60 @@ const LoginForm = () => {
 
   return (
     <>
-      <h3 className="text-2xl mb-4">Edit Post</h3>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-white">
-                  Email
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible::ring-offset-0"
-                    placeholder="Enter email"
-                    {...field}
-                  />
-                </FormControl>
+      <Card>
+        <CardHeader>Login</CardHeader>
+        <CardDescription>Login with your credentials</CardDescription>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-white">
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible::ring-offset-0"
+                        placeholder="Enter email"
+                        {...field}
+                      />
+                    </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-white">
-                  Password
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible::ring-offset-0"
-                    placeholder="Enter Password"
-                    {...field}
-                  />
-                </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-white">
+                      Password
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-slate-100 dark:bg-slate-500 border-0 focus-visible:ring-0 text-black dark:text-white focus-visible::ring-offset-0"
+                        placeholder="Enter Password"
+                        {...field}
+                      />
+                    </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <Button className="w-full dark:bg-slate-800 dark:text-cyan-50">
-            Login
-          </Button>
-        </form>
-      </Form>
+              <Button className="w-full dark:bg-slate-800 dark:text-cyan-50">
+                Login
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
     </>
   );
 };
